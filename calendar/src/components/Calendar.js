@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { format, addMonths, subMonths } from 'date-fns'
 import styled from 'styled-components'
 import CalendarHeader from './CalendarHeader'
+import CalendarGrid from './CalendarGrid'
 
-const CalendarDiv = styled.div`
+const HeaderDiv = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,22 +21,30 @@ export default class Calendar extends Component {
 
     incrementMonth = () => {
         this.setState({
-            currentMonth: addMonths(this.state.currentDate, 1),
+            currentDate: addMonths(this.state.currentDate, 1),
         })
     }
 
     decrementMonth = () => {
         this.setState({
-            currentMonth: subMonths(this.state.currentDate, 1),
+            currentDate: subMonths(this.state.currentDate, 1),
         })
     }
 
+    
+
     render() {
         return (
+            
             <div>
-                <CalendarDiv>
-                    <CalendarHeader currentDate={this.state.currentDate} />
-                </CalendarDiv>
+                <HeaderDiv>
+                    <CalendarHeader 
+                        currentDate={this.state.currentDate} 
+                        incrementMonth={this.incrementMonth}
+                        decrementMonth={this.decrementMonth}
+                    />
+                </HeaderDiv>
+                {/* <CalendarGrid currentDate={this.state.currentDate}></CalendarGrid> */}
             </div>
         )
     }

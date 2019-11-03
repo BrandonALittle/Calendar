@@ -24,8 +24,9 @@ const MonthYear = styled.div`
 `
 
 const CalendarHeader = (props) => {
-    const month = format(props.currentDate, 'MMMM')
-    const year = format(props.currentDate, 'yyyy')
+    const { currentDate, incrementMonth, decrementMonth } = props
+    const month = format(currentDate, 'MMMM')
+    const year = format(currentDate, 'yyyy')
     return (
         <>
             <div onClick={props.decrementMonth}>{'<---'}</div>
