@@ -4,13 +4,7 @@ module.exports = {
         'eslint:recommended',
         'plugin:react/recommended',
     ],
-    parserOptions: {
-        ecmaVersion: 6,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true,
-        },
-    },
+    parser: 'babel-eslint',
     settings: {
         react: {
             version: 'detect'
