@@ -1,5 +1,5 @@
 import React from 'react'
-import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval } from 'date-fns'
+import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth } from 'date-fns'
 import styled from 'styled-components'
 import CalendarDay from './CalendarDay'
 
@@ -7,7 +7,6 @@ const StyledCalendarGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
-    border: solid red 2px;
     height: 100vh;
 `
 
@@ -29,7 +28,16 @@ const CalendarGrid = (props) => {
     return (
         // <WeeksBar />
         <StyledCalendarGrid>
-            {getDaysOfMonth(props.currentDate).map(day => <CalendarDay date={day} />)}
+            {getDaysOfMonth(props.currentDate).map(day => {
+                    return (
+                        <CalendarDay 
+                            date={day}
+                            key={day} 
+                            isThisMonth={isSameMonth(props.currentDate, day)}
+                        />
+                    )
+                })
+            }
         </StyledCalendarGrid>
     )
 }

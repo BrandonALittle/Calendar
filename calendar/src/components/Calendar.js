@@ -44,7 +44,7 @@ export default class Calendar extends Component {
                         decrementMonth={this.decrementMonth}
                     />
                 </HeaderDiv>
-                {/* <CalendarGrid currentDate={this.state.currentDate}></CalendarGrid> */}
+                <CalendarGrid currentDate={this.state.currentDate}></CalendarGrid>
             </div>
         )
     }
