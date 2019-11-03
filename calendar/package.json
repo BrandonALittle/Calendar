@@ -36,8 +36,10 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "date-fns": "^2.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "styled-components": "^4.4.1"
   }
 }
