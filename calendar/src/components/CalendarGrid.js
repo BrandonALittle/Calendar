@@ -1,5 +1,5 @@
 import React from 'react'
-import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth } from 'date-fns'
+import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth, isSameDay } from 'date-fns'
 import styled from 'styled-components'
 import CalendarDay from './CalendarDay'
 
@@ -34,6 +34,8 @@ const CalendarGrid = (props) => {
                             date={day}
                             key={day} 
                             isThisMonth={isSameMonth(props.currentDate, day)}
+                            handleSelectDate={props.handleSelectDate}
+                            isSelected={isSameDay(props.selectedDate, day)}
                         />
                     )
                 })
