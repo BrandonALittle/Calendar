@@ -33,7 +33,7 @@ const StyledWeekday = styled.p`
 
 const WeeksBar = () => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    return days.map(day => <StyledWeekday>{day}</StyledWeekday>)
+    return days.map((day, index) => <StyledWeekday key={`${days[index]}-${index}`}>{day}</StyledWeekday>)
 }
 
 const CalendarGrid = props => {
