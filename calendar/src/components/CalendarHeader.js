@@ -1,6 +1,18 @@
 import React from 'react'
 import { format } from 'date-fns'
 import styled from 'styled-components'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
+const HeaderDiv = styled.div`
+grid-area: 'calendar-header';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #AD3238;
+    padding-left: 15px;
+    padding-right: 15px;
+`
 
 const MonthYear = styled.div`
     position: relative;
@@ -14,13 +26,11 @@ const MonthYear = styled.div`
         padding-top: 30px;
         padding-bottom: 30px;
     }
-    ${'' /* & .year {
+    & .year {
         position: absolute;
         opacity: 0.2;
         font-size: 5em;
-        letter-spacing: 1em;
-        text-indent: 1em;
-    } */}
+    }
 `
 
 const CalendarHeader = (props) => {
@@ -28,14 +38,14 @@ const CalendarHeader = (props) => {
     const month = format(currentDate, 'MMMM')
     const year = format(currentDate, 'yyyy')
     return (
-        <>
-            <div onClick={props.decrementMonth}>{'<---'}</div>
+        <HeaderDiv>
+            <div style={{cursor: 'pointer'}} onClick={props.decrementMonth}><ArrowBackIosIcon /></div>
             <MonthYear>
                 <div className={'month'}>{month}</div>
                 <div className={'year'}>{year}</div>
             </MonthYear>
-            <div onClick={props.incrementMonth}>{'-->'}</div>
-        </>
+            <div style={{cursor: 'pointer'}} onClick={props.incrementMonth}><ArrowForwardIosIcon /></div>
+        </HeaderDiv>
     )
 }
 
