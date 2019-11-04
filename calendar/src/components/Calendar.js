@@ -5,13 +5,13 @@ import ScheduleProvider from './ScheduleProvider'
 import CalendarHeader from './CalendarHeader'
 import CalendarGrid from './CalendarGrid'
 
-const HeaderDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: gray;
-    padding-left: 15px;
-    padding-right: 15px;
+const CalendarLayout = styled.div`
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-areas: 
+        "calendar-header"
+        "calendar-grid";
 `
 
 export default class Calendar extends Component {
@@ -41,20 +41,18 @@ export default class Calendar extends Component {
     render() {
         return (
             <ScheduleProvider>
-                <div style={{width: '100vw'}}>
-                    <HeaderDiv>
-                        <CalendarHeader
-                            currentDate={this.state.currentDate}
-                            incrementMonth={this.incrementMonth}
-                            decrementMonth={this.decrementMonth}
-                        />
-                    </HeaderDiv>
+                <CalendarLayout style={{ width: '100vw' }}>
+                    <CalendarHeader
+                        currentDate={this.state.currentDate}
+                        incrementMonth={this.incrementMonth}
+                        decrementMonth={this.decrementMonth}
+                    />
                     <CalendarGrid
                         currentDate={this.state.currentDate}
                         selectedDate={this.state.selectedDate}
                         handleSelectDate={this.handleSelectDate}
                     />
-                </div>
+                </CalendarLayout>
             </ScheduleProvider>
         )
     }
