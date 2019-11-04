@@ -9,6 +9,8 @@ import {
     TextField,
     makeStyles,
     Button,
+    Select,
+    MenuItem,
 } from '@material-ui/core'
 
 import DateFnsUtils from '@date-io/date-fns'
@@ -134,16 +136,33 @@ const ReminderModal = props => {
                         />
                     </div>
                     <div>
-                        <TextField
-                            id="city"
+                        <FormLabel id="city-label">City:</FormLabel>
+                        <Select
+                            labelId="city-label"
                             label="City"
-                            margin="normal"
-                            fullWidth
-                            inputProps={{ maxLength: 25 }}
                             onChange={handleCityChange}
-                        />
+                            fullWidth
+                        >
+                            <MenuItem value={'Bogota'}>Bogota</MenuItem>
+                            <MenuItem value={'Medellin'}>Medellin</MenuItem>
+                            <MenuItem value={'Bucaramanga'}>
+                                Bucaramanga
+                            </MenuItem>
+                            <MenuItem value={'Cali'}>Cali</MenuItem>
+                            <MenuItem value={'Pereira'}>Pereira</MenuItem>
+                            <MenuItem value={'Manizales'}>Manizales</MenuItem>
+                            <MenuItem value={'Armenia'}>Armenia</MenuItem>
+                            <MenuItem value={'Barranquilla'}>
+                                Barranquilla
+                            </MenuItem>
+                            <MenuItem value={'Rio Negro'}>Rio Negro</MenuItem>
+                            <MenuItem value={'Pasto'}>Pasto</MenuItem>
+                            <MenuItem value={'Salento'}>Salento</MenuItem>
+                        </Select>
                     </div>
-                    <Button variant="outlined" type="submit">Add Reminder</Button>
+                    <Button variant="outlined" type="submit">
+                        Add Reminder
+                    </Button>
                 </form>
             </div>
         </Modal>
