@@ -8,11 +8,16 @@ import {
     Radio,
     TextField,
     makeStyles,
+    Button,
 } from '@material-ui/core'
 
-import DateFnsUtils from '@date-io/date-fns';
+import DateFnsUtils from '@date-io/date-fns'
 import { parse } from 'date-fns'
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+    KeyboardTimePicker,
+} from '@material-ui/pickers'
 import styled from 'styled-components'
 
 const useStyles = makeStyles(theme => ({
@@ -31,7 +36,8 @@ const useStyles = makeStyles(theme => ({
 
 const ReminderModal = props => {
     const classes = useStyles()
-    const colors = ['red', 'yellow', 'blue', 'green']
+    const colors = ['#56BD2F', '#C4962F', '#AD3238', '#3F2FC4', '#2DBA93']
+    const colorNames = ['Optional', 'Work', 'Important!', 'Family', 'Friend']
 
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [city, setCity] = useState('')
@@ -42,22 +48,21 @@ const ReminderModal = props => {
         setSelectedDate(date)
     }
 
-    const handleCityChange = (e) => {
+    const handleCityChange = e => {
         setCity(e.target.value)
     }
 
-    const handleColorChange = (e) => {
-        console.log(color)
+    const handleColorChange = e => {
         setColor(e.target.value)
     }
 
-    const handleReminderTextChange = (e) => {
+    const handleReminderTextChange = e => {
         setReminderText(e.target.value)
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = event => {
         event.preventDefault()
-        props.addReminder(selectedDate, reminderText, city)
+        props.addReminder(selectedDate, reminderText, city, color)
     }
 
     return (
@@ -84,8 +89,18 @@ const ReminderModal = props => {
                                     'aria-label': 'change date',
                                 }}
                             />
+                            <KeyboardTimePicker
+                                margin="normal"
+                                id="time-picker"
+                                label="Event Time"
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change time',
+                                }}
+                            />
                         </MuiPickersUtilsProvider>
-                        <FormLabel component="legend">Reminder Color</FormLabel>
+
                         <RadioGroup
                             aria-label="position"
                             name="position"
@@ -94,14 +109,15 @@ const ReminderModal = props => {
                             onChange={handleColorChange}
                             row
                         >
-                            {colors.map(color => {
+                            {colors.map((color, index) => {
                                 return (
                                     <FormControlLabel
+                                        key={`${color}-${index}`}
                                         value={color}
                                         control={
                                             <Radio style={{ color: color }} />
                                         }
-                                        label={color}
+                                        label={colorNames[index]}
                                     />
                                 )
                             })}
@@ -110,10 +126,10 @@ const ReminderModal = props => {
                     <div>
                         <TextField
                             id="reminder"
-                            label="Reminder Text (max 80 chars)"
+                            label="Reminder Text (max 30 chars)"
                             margin="normal"
                             fullWidth
-                            inputProps={{ maxLength: 80 }}
+                            inputProps={{ maxLength: 30 }}
                             onChange={handleReminderTextChange}
                         />
                     </div>
@@ -127,7 +143,7 @@ const ReminderModal = props => {
                             onChange={handleCityChange}
                         />
                     </div>
-                    <button type="submit">Add Reminder</button>
+                    <Button variant="outlined" type="submit">Add Reminder</Button>
                 </form>
             </div>
         </Modal>
