@@ -14,13 +14,13 @@ const MonthYear = styled.div`
         padding-top: 30px;
         padding-bottom: 30px;
     }
-    & .year {
+    ${'' /* & .year {
         position: absolute;
         opacity: 0.2;
         font-size: 5em;
         letter-spacing: 1em;
         text-indent: 1em;
-    }
+    } */}
 `
 
 const CalendarHeader = (props) => {
