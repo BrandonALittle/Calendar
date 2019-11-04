@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyledReminder = styled.div`
     margin-bottom: 5px;
     background-color: ${props => props.color || 'light-gray'};
-    opacity: 0.8;
+    opacity: 0.6;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -31,6 +31,7 @@ const StyledCity = styled.div`
     margin: 0;
     padding: 5px;
     text-decoration: underline;
+    font-size: 0.8em;
 `
 
 const Reminder = props => {
