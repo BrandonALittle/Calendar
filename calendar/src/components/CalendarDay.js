@@ -57,7 +57,6 @@ const CalendarDay = props => {
 
 CalendarDay.propTypes = {
     date: PropTypes.date,
-    key: PropTypes.date,
     isThisMonth: PropTypes.bool.isRequired,
     isWeekend: PropTypes.bool.isRequired,
     handleSelectDate: PropTypes.func.isRequired,

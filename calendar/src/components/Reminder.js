@@ -79,7 +79,6 @@ const Reminder = props => {
 }
 
 Reminder.propTypes = {
-    key: PropTypes.string,
     reminder: PropTypes.object,
 }
 
