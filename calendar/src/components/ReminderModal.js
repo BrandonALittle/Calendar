@@ -145,19 +145,19 @@ const ReminderModal = props => {
                         >
                             <MenuItem value={'Bogota'}>Bogota</MenuItem>
                             <MenuItem value={'Medellin'}>Medellin</MenuItem>
+                            <MenuItem value={'Armenia'}>Armenia</MenuItem>
+                            <MenuItem value={'Pereira'}>
+                                Pereira
+                            </MenuItem>
+                            <MenuItem value={'Manizales'}>Manizales</MenuItem>
+                            <MenuItem value={'Cali'}>Cali</MenuItem>
+                            <MenuItem value={'Cartagena'}>Cartagena</MenuItem>
                             <MenuItem value={'Bucaramanga'}>
                                 Bucaramanga
                             </MenuItem>
-                            <MenuItem value={'Cali'}>Cali</MenuItem>
-                            <MenuItem value={'Pereira'}>Pereira</MenuItem>
-                            <MenuItem value={'Manizales'}>Manizales</MenuItem>
-                            <MenuItem value={'Armenia'}>Armenia</MenuItem>
-                            <MenuItem value={'Barranquilla'}>
-                                Barranquilla
-                            </MenuItem>
-                            <MenuItem value={'Rio Negro'}>Rio Negro</MenuItem>
-                            <MenuItem value={'Pasto'}>Pasto</MenuItem>
                             <MenuItem value={'Salento'}>Salento</MenuItem>
+                            <MenuItem value={'Rio Negro'}>Rio Negro</MenuItem>
+                            <MenuItem value={'Providencia'}>Providencia</MenuItem>
                         </Select>
                     </div>
                     <Button variant="outlined" type="submit">

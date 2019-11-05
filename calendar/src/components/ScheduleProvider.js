@@ -4,7 +4,6 @@ import { format } from 'date-fns'
 import { Fab } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import ReminderModal from './ReminderModal'
-import { thisExpression } from '@babel/types';
 
 export default class ScheduleProvider extends Component {
     state = {
@@ -76,7 +75,10 @@ export default class ScheduleProvider extends Component {
                     addReminder={this.addReminder}
                 />
                 {this.props.children}
-                <Fab style={{ position: 'fixed', bottom: '5%', right: '5%'}} onClick={this.handleModalOpen}>
+                <Fab
+                    style={{ position: 'fixed', bottom: '5%', right: '5%' }}
+                    onClick={this.handleModalOpen}
+                >
                     <AddIcon />
                 </Fab>
             </Schedule.Provider>
