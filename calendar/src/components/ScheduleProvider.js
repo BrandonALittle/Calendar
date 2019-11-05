@@ -76,7 +76,7 @@ export default class ScheduleProvider extends Component {
                 />
                 {this.props.children}
                 <Fab
-                    style={{ position: 'fixed', bottom: '5%', right: '5%' }}
+                    style={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: '#C4962F', color: '#3F2FC4' }}
                     onClick={this.handleModalOpen}
                 >
                     <AddIcon />
