@@ -14,7 +14,7 @@ Also, the choices of city when adding a reminder have been limited to a short li
 
 The ability to delete a reminder is half-finished. There is a deleteReminder function in the Schedule Provider, but it has not been tested and is not passed to any other components. 
 
-Styles are not perfect. When the size of the list of reminders in a day exceeds the height of the calendar square, the overflow is not properly handled currently. 
+Styles are not perfect. When the size of the list of reminders in a day exceeds the height of the calendar square, the overflow is not properly handled currently. There are likely many other styling issues that would benefit from more time and attention.
 
 Styled Components were used in most cases, but some Material UI components were used as well, which use a different styling method.
 
