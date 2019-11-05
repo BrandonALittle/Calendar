@@ -7,18 +7,22 @@ import Schedule from './ScheduleContext'
 const Day = styled.div`
     padding: 10px;
     border: solid 1px black;
-    background-color: ${props => (props.isThisMonth ? 'white' : 'gray')};
-    opacity: ${props => (props.isThisMonth ? '1' : '0.5')};
+    background-color: ${props => (props.isWeekend ? '#969696' : 'white')};
     border: ${props =>
-        props.isToday ? 'solid #56BD2F 2px' : 'solid gray 1px'};
+        props.isToday ? 'solid #56BD2F 2px' : 'solid black 1px'};
     box-shadow: ${props =>
         props.isSelected
             ? '2px 2px 3px #C4962F inset, -2px -2px 3px #C4962F inset'
             : 'none'};
 `
 
+const StyledNumber = styled.div`
+    color: ${props =>
+        !props.isThisMonth ? 'gray' : props.isWeekend ? '#3F2FC4' : 'black'};
+`
+
 const CalendarDay = props => {
-    const { date, isThisMonth, isSelected, handleSelectDate } = props
+    const { date, isThisMonth, isWeekend, isSelected, handleSelectDate } = props
     const schedule = useContext(Schedule)
     const [currentWeather, setCurrentWeather] = useState(null)
 
@@ -26,20 +30,23 @@ const CalendarDay = props => {
     const dayOfMonth = getDate(date)
     const reminders = schedule.getRemindersForDate(date)
 
-    // useEffect(() => {
-
-    // })
+    const sortFunction = (reminderA, reminderB) => {
+        return reminderA.timeStamp - reminderB.timeStamp
+    }
 
     return (
         <Day
             isThisMonth={isThisMonth}
+            isWeekend={isWeekend}
             isToday={today}
             onClick={() => handleSelectDate(date)}
             isSelected={isSelected}
         >
-            {dayOfMonth}
+            <StyledNumber isThisMonth={isThisMonth} isWeekend={isWeekend}>
+                {dayOfMonth}
+            </StyledNumber>
             <div style={{ overflow: 'scroll', padding: '2px' }}>
-                {reminders.map((reminder, index) => (
+                {reminders.sort(sortFunction).map((reminder, index) => (
                     <Reminder key={`${date}-${index}`} reminder={reminder} />
                 ))}
             </div>
