@@ -7,12 +7,13 @@ import {
     eachDayOfInterval,
     isSameMonth,
     isSameDay,
+    isWeekend,
 } from 'date-fns'
 import styled from 'styled-components'
 import CalendarDay from './CalendarDay'
 
 const StyledCalendarGrid = styled.div`
-    grid-area: "calendar-grid";
+    grid-area: 'calendar-grid';
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 30px repeat(5, 1fr);
@@ -28,12 +29,22 @@ const StyledCalendarGrid = styled.div`
 const StyledWeekday = styled.p`
     margin: 5px 0;
     text-align: center;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
 `
 
 const WeeksBar = () => {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    return days.map((day, index) => <StyledWeekday key={`${days[index]}-${index}`}>{day}</StyledWeekday>)
+    const days = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+    ]
+    return days.map((day, index) => (
+        <StyledWeekday key={`${days[index]}-${index}`}>{day}</StyledWeekday>
+    ))
 }
 
 const CalendarGrid = props => {
@@ -52,13 +63,16 @@ const CalendarGrid = props => {
 
     return (
         <StyledCalendarGrid>
-            <WeeksBar className="weekday-names" />
+            <WeeksBar
+                className="weekday-names"
+            />
             {getDaysOfMonth(props.currentDate).map(day => {
                 return (
                     <CalendarDay
                         date={day}
                         key={day}
                         isThisMonth={isSameMonth(props.currentDate, day)}
+                        isWeekend={isWeekend(day)}
                         handleSelectDate={props.handleSelectDate}
                         isSelected={isSameDay(props.selectedDate, day)}
                     />
