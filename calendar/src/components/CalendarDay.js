@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { isToday, getDate } from 'date-fns'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import Reminder from './Reminder'
 import Schedule from './ScheduleContext'
 
@@ -52,6 +53,15 @@ const CalendarDay = props => {
             </div>
         </Day>
     )
+}
+
+CalendarDay.propTypes = {
+    date: PropTypes.date,
+    key: PropTypes.date,
+    isThisMonth: PropTypes.bool.isRequired,
+    isWeekend: PropTypes.bool.isRequired,
+    handleSelectDate: PropTypes.func.isRequired,
+    isSelected: PropTypes.bool.isRequired,
 }
 
 export default CalendarDay

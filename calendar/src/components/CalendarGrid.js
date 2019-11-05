@@ -10,6 +10,7 @@ import {
     isWeekend,
 } from 'date-fns'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import CalendarDay from './CalendarDay'
 
 const StyledCalendarGrid = styled.div`
@@ -63,9 +64,7 @@ const CalendarGrid = props => {
 
     return (
         <StyledCalendarGrid>
-            <WeeksBar
-                className="weekday-names"
-            />
+            <WeeksBar className="weekday-names" />
             {getDaysOfMonth(props.currentDate).map(day => {
                 return (
                     <CalendarDay
@@ -80,6 +79,12 @@ const CalendarGrid = props => {
             })}
         </StyledCalendarGrid>
     )
+}
+
+CalendarGrid.propTypes = {
+    currentDate: PropTypes.date,
+    selectedDate: PropTypes.func.isRequired,
+    handleSelectDate: PropTypes.func.isRequired,
 }
 
 export default CalendarGrid

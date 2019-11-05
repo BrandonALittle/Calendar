@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledReminder = styled.div`
     margin-bottom: 5px;
@@ -36,6 +37,7 @@ const StyledCity = styled.div`
 
 const StyledWeather = styled.div`
     font-size: 0.8em;
+    padding: 5px;
 `
 
 const cityToId = {
@@ -74,6 +76,11 @@ const Reminder = props => {
             <StyledTime>{time}</StyledTime>
         </StyledReminder>
     )
+}
+
+Reminder.propTypes = {
+    key: PropTypes.string,
+    reminder: PropTypes.object,
 }
 
 export default Reminder

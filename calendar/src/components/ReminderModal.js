@@ -12,7 +12,7 @@ import {
     Select,
     MenuItem,
 } from '@material-ui/core'
-
+import PropTypes from 'prop-types'
 import DateFnsUtils from '@date-io/date-fns'
 import { parse } from 'date-fns'
 import {
@@ -167,6 +167,12 @@ const ReminderModal = props => {
             </div>
         </Modal>
     )
+}
+
+ReminderModal.propTypes = {
+    open: PropTypes.bool,
+    handleClose: PropTypes.func.isRequired,
+    addReminder: PropTypes.func.isRequired,
 }
 
 export default ReminderModal

@@ -1,6 +1,7 @@
 import React from 'react'
 import { format } from 'date-fns'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
@@ -47,6 +48,12 @@ const CalendarHeader = (props) => {
             <div style={{cursor: 'pointer'}} onClick={props.incrementMonth}><ArrowForwardIosIcon /></div>
         </HeaderDiv>
     )
+}
+
+CalendarHeader.propTypes = {
+    currentDate: PropTypes.date,
+    incrementMonth: PropTypes.func.isRequired,
+    decrementMonth: PropTypes.func.isRequired
 }
 
 export default CalendarHeader
